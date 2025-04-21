@@ -65,11 +65,11 @@ Companies often invest in various advertising channels but struggle to quantify 
 
 ## 📊 Model Performance
 
-| Metric    | Value  |
-|-----------|--------|
-| R² Score  | 0.897  |
-| MAE       | 1.17   |
-| RMSE      | 1.44   |
+| Metric    | Value    |
+|-----------|----------|
+| R² Score  | 0.895    |
+| MAE       | 1.3775   |
+| RMSE      | 1.6844   |
 
 > *Model trained using Lasso Regression with cross-validation on Advertising dataset.*
 
