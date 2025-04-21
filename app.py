@@ -19,9 +19,9 @@ st.title("Sales Prediction App")
 st.write("Enter the values for TV, Radio, and Newspaper advertising spend to predict Sales.")
 
 # Input fields
-tv = st.number_input("Enter TV advertising spend", value=0.0, format="%.2f")
-radio = st.number_input("Enter Radio advertising spend", value=0.0, format="%.2f")
-newspaper = st.number_input("Enter Newspaper advertising spend", value=0.0, format="%.2f")
+tv = st.number_input("Enter TV advertising spend(In thousand $)", value=0.0, format="%.2f")
+radio = st.number_input("Enter Radio advertising spend(In thousand $)", value=0.0, format="%.2f")
+newspaper = st.number_input("Enter Newspaper advertising spend(In thousand $)", value=0.0, format="%.2f")
 
 # Predict button
 if st.button("Predict"):
@@ -38,4 +38,4 @@ if st.button("Predict"):
     prediction = model.predict(input_scaled)
 
     # Display prediction
-    st.success(f"Predicted Sales: {prediction[0]:.2f}")
+    st.success(f"Predicted Sales: {prediction[0]:.2f} Million $")
