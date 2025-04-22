@@ -16,25 +16,28 @@ feature_names = ['TV', 'Radio', 'Newspaper']
 
 # Streamlit app
 st.title("Sales Prediction App")
-st.write("Enter the values for TV, Radio, and Newspaper advertising spend to predict Sales.")
+st.write("Enter the advertising spend amounts in dollars ($) to predict Sales.")
 
 # Input fields
-tv = st.number_input("Enter TV advertising spend(In thousand $)", value=0.0, format="%.2f")
-radio = st.number_input("Enter Radio advertising spend(In thousand $)", value=0.0, format="%.2f")
-newspaper = st.number_input("Enter Newspaper advertising spend(In thousand $)", value=0.0, format="%.2f")
+tv = st.number_input("TV advertising spend ($)", value=0.0, format="%.2f")
+radio = st.number_input("Radio advertising spend ($)", value=0.0, format="%.2f")
+newspaper = st.number_input("Newspaper advertising spend ($)", value=0.0, format="%.2f")
 
 # Predict button
 if st.button("Predict"):
-    # Create input DataFrame in the correct column order
-    input_df = pd.DataFrame([[tv, radio, newspaper]], columns=feature_names)
+    # Convert inputs from dollars to thousands of dollars
+    input_data = [[tv/1000, radio/1000, newspaper/1000]]
+    
+    # Create input DataFrame
+    input_df = pd.DataFrame(input_data, columns=feature_names)
 
-    # Step 1: Apply capping to Newspaper
+    # Apply capping to Newspaper
     input_df['Newspaper'] = input_df['Newspaper'].clip(lower_bound, upper_bound)
 
-    # Step 2: Scale the input
+    # Scale the input
     input_scaled = scaler.transform(input_df)
 
-    # Step 3: Make prediction
+    # Make prediction
     prediction = model.predict(input_scaled)
 
     # Display prediction
