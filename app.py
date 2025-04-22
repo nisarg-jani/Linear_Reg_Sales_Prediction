@@ -41,4 +41,4 @@ if st.button("Predict"):
     prediction = model.predict(input_scaled)
 
     # Display prediction
-    st.success(f"Predicted Sales: {prediction[0]:.2f} Million $")
+    st.success(f"Predicted Sales: {prediction[0]:.2f} Millions $")
